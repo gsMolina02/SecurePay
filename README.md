@@ -6,6 +6,14 @@
 
 ---
 
+## Informe del Examen
+
+El informe completo del examen parcial se encuentra en el siguiente documento:
+
+[MolinaGustavo_ExamenParcial2.pdf](MolinaGustavo_ExamenParcial2.pdf)
+
+---
+
 ## Configuración e Instalación
 
 ```bash
@@ -59,7 +67,7 @@ bash keypair.sh
 > node -e "require('./src/instrument'); const j = require('./src/services/jwt.service'); console.log(j.signToken({ id: 'usr_001', email: 'estudiante.alpha@espe.edu.ec' }));"
 > ```
 
-<!-- Reemplaza la ruta por tu captura real -->
+<!-- Reemplaza la ruta por tu captura real --> 
 ![Token generado en Postman](docs/01-token-generado.png)
 
 #### Acceso válido — GET /v1/account-alpha/balance
