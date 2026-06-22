@@ -1,3 +1,5 @@
+const Sentry = require('@sentry/node');
+
 class TransferController {
   constructor(transactionService) {
     this.transactionService = transactionService;
@@ -14,11 +16,17 @@ class TransferController {
         });
       }
 
-      const result = this.transactionService.executeTransfer(fromAccountId, toAccountId, Number(amount));
-      return res.status(200).json(result);
+      // Disparador de error operacional: simula fallo de conexión a la base de datos
+      throw new Error("Conexión interrumpida con el Clúster de Datos SecurePay");
+
     } catch (error) {
-      return res.status(400).json({
-        error: 'Error en la transacción',
+      Sentry.withScope((scope) => {
+        scope.setTag('user_id', req.user?.sub || 'anonymous');
+        Sentry.captureException(error);
+      });
+
+      return res.status(500).json({
+        error: 'Error operacional',
         message: error.message
       });
     }

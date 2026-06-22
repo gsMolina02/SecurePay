@@ -1,3 +1,19 @@
+# Dependencias
 node_modules/
-*.pem
+
+# Variables de entorno (contienen secretos)
 .env
+.env.local
+.env.*.local
+
+# Claves criptográficas
+*.pem
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
